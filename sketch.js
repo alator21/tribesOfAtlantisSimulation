@@ -19,11 +19,13 @@ $(function(){
     });
     $(document).on('click','#stopAquaman',function(){
         if (aquaman){
-            aquaman.moveToAndStop(width-100,50);
+            aquaman.stopFlocking();
         }
     });
     $(document).on('click','#startAquamanAgain',function(){
-        aquaman.startFlockingAgain();
+        if (aquaman){
+            aquaman.startFlockingAgain();
+        }
     });
 });
 
@@ -152,12 +154,6 @@ function draw() {
 
 
 }
-
-// function mouseClicked() {
-//     let x = mouseX;
-//     let y = mouseY;
-//     spawnTheAquaman(x,y);
-// }
 
 function spawnFish(howMany) {
     for (let nest of nests) {
