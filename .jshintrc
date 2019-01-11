@@ -723,6 +723,7 @@
         "Trench" : true,
         "Brine" : true,
         "Fisherman" : true,
+        "Aquaman" : true,
 
         "$": true
     }

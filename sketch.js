@@ -8,12 +8,32 @@ let allElements = [];
 let aquaman;
 let aquamanImage;
 
+$(function(){
+    $(document).on('click','#spawnAquaman',function(){
+        if (!aquaman){
+            spawnTheAquaman(width/2,height/2);
+            $('#stopAquaman').attr('disabled',false);
+            $('#startAquamanAgain').attr('disabled',false);
+            $(this).attr('disabled',true);
+        }
+    });
+    $(document).on('click','#stopAquaman',function(){
+        if (aquaman){
+            aquaman.moveToAndStop(width-100,50);
+        }
+    });
+    $(document).on('click','#startAquamanAgain',function(){
+        aquaman.startFlockingAgain();
+    });
+});
+
 function preload() {
     // aquamanImage = loadImage('assets/images/aquaman.jpg');
 }
 
 function setup() {
     createCanvas(windowWidth - 100, windowHeight - 100);
+    initializeUI();
     nests.push(new Nest('Fish'));
     nests.push(new Nest('Trench'));
     nests.push(new Nest('Brine'));
@@ -84,10 +104,6 @@ function draw() {
             aquaman.moveToAndStop(width - 100, 50);
 
         }
-        if (aquaman.numberOfKills > 2) {
-            aquaman.stopFlocking();
-            aquaman.numberOfKills = 0;
-        }
         let intersectingElements = [];
 
         if (aquaman.intersects(trenchElements).length > 0) {
@@ -137,11 +153,11 @@ function draw() {
 
 }
 
-function mouseClicked() {
-    let x = mouseX;
-    let y = mouseY;
-    spawnTheAquaman(x,y);
-}
+// function mouseClicked() {
+//     let x = mouseX;
+//     let y = mouseY;
+//     spawnTheAquaman(x,y);
+// }
 
 function spawnFish(howMany) {
     for (let nest of nests) {
@@ -237,4 +253,14 @@ function spawnTheAquaman(x,y) {
     let velocity = p5.Vector.random2D();
     velocity.setMag(8);
     aquaman = new Aquaman(x, y, size, velocity);
+}
+
+function initializeUI(){
+    let rethtml = ``;
+    rethtml += `<button class='retro-button green-button' id='spawnAquaman'>Spawn Aquaman</button>`;
+    rethtml += `<span style='font-size:20px'>|| </span>`;
+    rethtml += `<button class='retro-button red-button' id='stopAquaman' disabled>Stop Aquaman</button>`;
+    rethtml += `<span style='font-size:20px'>|| </span>`;
+    rethtml += `<button class='retro-button yellow-button' id='startAquamanAgain' disabled>Start Aquaman again</button>`;
+    $('body').append(rethtml);
 }
