@@ -1,6 +1,7 @@
 'use strict';
+const names = ['John', 'Alfie', 'Alfred', 'Bellamy', 'Atticus', 'Blaze', 'Jeannine', 'Fritz', 'Garry','Fabian','Rafael','Connor','Zachariah','Solomon','Byron','Franklin','Ian','Zakaria','Julian','Margot','Anam','Nina','Scarlet','Hakeem','Troy','Paolo','Nolan','Carina','Ioana','Bayley','Alex','Eliza','Ismail','Nate','Shanna','Anne','Tayler','Reagan','Isa','Jazmin','Shannon','Fatma','Idris'];
 class Boid {
-    constructor(x, y, size, velocity) {
+    constructor(x, y, size, velocity, image, imageFlipped) {
         this.position = createVector(x, y);
         this.size = size;
         this.velocity = velocity;
@@ -11,26 +12,35 @@ class Boid {
         this.idle = false;
         this.statue = false;
         this.numberOfKills = 0;
+        this.name = random(names);
+        this.image = image;
+        this.imageFlipped = imageFlipped;
     }
     show() {
-        if (this.idle){
-            strokeWeight(4);
-            if (this.statue){
-                stroke(random(255),random(200),random(15));
-            }
-            else{
-                stroke(0);
-            }
+        if (globalShowNames) {
+            stroke(150, 0, 0);
+            noFill();
+            textSize(15);
+            text(this.name, this.position.x, this.position.y - this.size / 2);
         }
-        else{
-            noStroke();
+        if (globalImageMode) {
+            let image1;
+            if (this.velocity.x > 0) {
+                image1 = this.image;
+            } else {
+                image1 = this.imageFlipped;
+            }
+            image1.mask(maskImage);
+            image(image1, this.position.x, this.position.y, this.size, this.size);
+        } else {
+            stroke(0);
+            fill(this.color.x, this.color.y, this.color.z);
+            ellipse(this.position.x, this.position.y, this.size - 15, this.size - 15);
         }
-        fill(this.color.x, this.color.y, this.color.z);
-        ellipse(this.position.x, this.position.y, this.size, this.size);
     }
 
     update() {
-        if (this.statue){
+        if (this.statue) {
             this.velocity.mult(0);
             return;
         }
@@ -204,7 +214,7 @@ class Boid {
     }
 
     eat(element) {
-        this.numberOfKills ++;
+        this.numberOfKills++;
         this.size += 1;
         this.maxSpeed -= 0.05;
     }

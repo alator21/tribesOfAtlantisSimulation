@@ -39,9 +39,12 @@ class Nest {
         noStroke();
         fill(0, this.colorAlpha);
         ellipse(this.position.x, this.position.y, this.size, this.size);
-        textSize(15);
-        textAlign(CENTER);
-        fill(255);
-        text(this.name, this.textPosition.x, this.textPosition.y);
+        if (this.colorAlpha > 80) {
+            textSize(15);
+            textAlign(CENTER);
+            fill(255);
+            text(this.name, this.textPosition.x, this.textPosition.y);
+        }
+
     }
 }

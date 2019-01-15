@@ -724,7 +724,20 @@
         "Brine" : true,
         "Fisherman" : true,
         "Aquaman" : true,
-
+        "aquamanImage" : true,
+        "aquamanImageFlipped" : true,
+        "fishImage" : true,
+        "fishImageFlipped" : true,
+        "trenchImage" : true,
+        "trenchImageFlipped" : true,
+        "brineImage" : true,
+        "brineImageFlipped" : true,
+        "fishermanImage" : true,
+        "fishermanImageFlipped" : true,
+        "maskImage" : true,
+        "globalShowNames" : true,
+        "globalImageMode" : true,
+        
         "$": true
     }
 }
