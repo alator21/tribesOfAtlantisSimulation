@@ -6,7 +6,7 @@ Generally this simulation assumes that:
 
 * The fishes fear the Trench tribe.
 
-* The Trench tribe fear the Brine tribe and the Aquaman. They also hunt the fish.
+* The Trench tribe fear the Brine tribe and the Aquaman. They also hunt the fishes.
 
 * The Brine tribe wont hunt nor fear anyone(even if the trench are afraid of them).
 
