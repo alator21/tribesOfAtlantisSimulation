@@ -1,5 +1,5 @@
 'use strict';
-const names = ['John', 'Alfie', 'Alfred', 'Bellamy', 'Atticus', 'Blaze', 'Jeannine', 'Fritz', 'Garry','Fabian','Rafael','Connor','Zachariah','Solomon','Byron','Franklin','Ian','Zakaria','Julian','Margot','Anam','Nina','Scarlet','Hakeem','Troy','Paolo','Nolan','Carina','Ioana','Bayley','Alex','Eliza','Ismail','Nate','Shanna','Anne','Tayler','Reagan','Isa','Jazmin','Shannon','Fatma','Idris'];
+const names = ['John', 'Alfie', 'Alfred', 'Bellamy', 'Atticus', 'Blaze', 'Jeannine', 'Fritz', 'Garry', 'Fabian', 'Rafael', 'Connor', 'Zachariah', 'Solomon', 'Byron', 'Franklin', 'Ian', 'Zakaria', 'Julian', 'Margot', 'Anam', 'Nina', 'Scarlet', 'Hakeem', 'Troy', 'Paolo', 'Nolan', 'Carina', 'Ioana', 'Bayley', 'Alex', 'Eliza', 'Ismail', 'Nate', 'Shanna', 'Anne', 'Tayler', 'Reagan', 'Isa', 'Jazmin', 'Shannon', 'Fatma', 'Idris'];
 class Boid {
     constructor(x, y, size, velocity, image, imageFlipped) {
         this.position = createVector(x, y);
@@ -143,6 +143,7 @@ class Boid {
         if (chaseElements.length !== 0) {
             let chase = this.chase(chaseElements, chaseMult);
             this.accelaration.add(chase);
+            this.hunt(chaseElements);
         }
 
 
@@ -213,10 +214,61 @@ class Boid {
         return intersectingElements;
     }
 
-    eat(element) {
+    eat() {
         this.numberOfKills++;
         this.size += 1;
         this.maxSpeed -= 0.05;
+    }
+
+    hunt(elements) {
+        let intersectingElements = this.intersects(elements);
+        if (intersectingElements.length > 0) {
+            for (let j = 0; j < intersectingElements.length; j++) {
+                let elementThatIntersects = intersectingElements[j];
+                let className = elementThatIntersects.constructor.name;
+                let index;
+                switch (className) {
+                    case 'Fish':
+                        index = fishElements.indexOf(elementThatIntersects);
+                        if (index !== -1) {
+                            fishElements.splice(index, 1);
+                        }
+                        break;
+                    case 'Trench':
+                        index = trenchElements.indexOf(elementThatIntersects);
+                        if (index !== -1) {
+                            trenchElements.splice(index, 1);
+                        }
+                        break;
+                    case 'Brine':
+                        index = brineElements.indexOf(elementThatIntersects);
+                        if (index !== -1) {
+                            brineElements.splice(index, 1);
+                        }
+                        break;
+                    case 'Fisherman':
+                        index = fishermanElements.indexOf(elementThatIntersects);
+                        if (index !== -1) {
+                            fishermanElements.splice(index, 1);
+                        }
+                        break;
+                    case 'Aquaman':
+                        aquaman = undefined;
+                        break;
+                    default:
+                        console.log(`Cant find class:${className}`);
+                        break;
+                }
+                if (index !== -1) {
+                    let gIndex = allElements.indexOf(elementThatIntersects);
+                    if (gIndex !== -1) {
+                        allElements.splice(gIndex, 1);
+                        this.eat();
+                    }
+
+                }
+            }
+        }
     }
 
     moveTowards(x, y) {

@@ -20,6 +20,7 @@ let maskImage;
 
 let globalImageMode = true;
 let globalShowNames = false;
+let globalShowKills = true;
 
 
 
@@ -64,7 +65,6 @@ function preload() {
     fishermanImageFlipped = loadImage('assets/images/fishermanFlipped.png');
     maskImage = createGraphics(512, 512);
     maskImage.beginShape();
-
     maskImage.ellipse(240, 240, 1000, 1000);
     maskImage.endShape();
 }
@@ -111,19 +111,6 @@ function draw() {
     }
     for (let i = 0; i < trenchElements.length; i++) {
         let trench = trenchElements[i];
-        let intersectingElements = [];
-        intersectingElements = trench.intersects(fishElements);
-        if (intersectingElements.length > 0) {
-            for (let j = 0; j < intersectingElements.length; j++) {
-                let elementThatIntersects = intersectingElements[j];
-                trench.eat();
-                let index = fishElements.indexOf(elementThatIntersects);
-                if (index !== -1) {
-                    fishElements.splice(index, 1);
-                }
-            }
-
-        }
         if (aquaman) {
             trench.flock(trenchElements, [...brineElements, aquaman], 5, fishElements, 1, 1, 1, 1.5);
         } else {
@@ -154,24 +141,6 @@ function draw() {
             aquaman.moveToAndStop(width - 100, 50);
 
         }
-        let intersectingElements = [];
-
-        if (aquaman.intersects(trenchElements).length > 0) {
-            intersectingElements = aquaman.intersects(trenchElements);
-        }
-
-        if (intersectingElements.length > 0) {
-            for (let i = 0; i < intersectingElements.length; i++) {
-                let elementThatIntersects = intersectingElements[i];
-                let index;
-                let className = elementThatIntersects.constructor.name;
-                if (className === 'Trench') {
-                    index = trenchElements.indexOf(elementThatIntersects);
-                    trenchElements.splice(index, 1);
-                    aquaman.eat();
-                }
-            }
-        }
         aquaman.flock([...brineElements, ...fishermanElements], [], 1, trenchElements, 3, 1, 1, 1);
         aquaman.limitIntoCanvas();
         aquaman.update();
@@ -198,6 +167,7 @@ function spawnFish(howMany) {
                 let element = new Fish(x, y, size, velocity, fishImage, fishImageFlipped);
                 fishElements.push(element);
             }
+            allElements.push(...fishElements);
             break;
         }
     }
@@ -220,6 +190,7 @@ function spawnTrench(howMany) {
                 let element = new Trench(x, y, size, velocity, trenchImage, trenchImageFlipped);
                 trenchElements.push(element);
             }
+            allElements.push(...trenchElements);
             break;
         }
 
@@ -243,6 +214,7 @@ function spawnBrine(howMany) {
                 let element = new Brine(x, y, size, velocity, brineImage, brineImageFlipped);
                 brineElements.push(element);
             }
+            allElements.push(...brineElements);
             break;
         }
     }
@@ -265,6 +237,7 @@ function spawnFisherman(howMany) {
                 let element = new Fisherman(x, y, size, velocity, fishermanImage, fishermanImageFlipped);
                 fishermanElements.push(element);
             }
+            allElements.push(...fishermanElements);
             break;
         }
     }
@@ -275,6 +248,7 @@ function spawnTheAquaman(x, y) {
     let velocity = p5.Vector.random2D();
     velocity.setMag(8);
     aquaman = new Aquaman(x, y, size, velocity, aquamanImage, aquamanImageFlipped);
+    allElements.push(aquaman);
 }
 
 function initializeUI() {
