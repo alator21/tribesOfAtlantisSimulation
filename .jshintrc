@@ -737,6 +737,13 @@
         "maskImage" : true,
         "globalShowNames" : true,
         "globalImageMode" : true,
+        "globalShowKills" : true,
+        "allElements" : true,
+        "fishElements" : true,
+        "trenchElements" : true,
+        "brineElements" : true,
+        "fishermanElements" : true,
+        "aquaman" : true,
         
         "$": true
     }
