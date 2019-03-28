@@ -24,33 +24,33 @@ let globalShowKills = true;
 
 
 
-$(function() {
-    $(document).on('click', '#spawnAquaman', function() {
-        if (!aquaman) {
-            spawnTheAquaman(width / 2, height / 2);
-            $('#stopAquaman').attr('disabled', false);
-            $('#startAquamanAgain').attr('disabled', false);
-            $(this).attr('disabled', true);
-        }
-    });
-    $(document).on('click', '#stopAquaman', function() {
-        if (aquaman) {
-            aquaman.stopFlocking();
-        }
-    });
-    $(document).on('click', '#startAquamanAgain', function() {
-        if (aquaman) {
-            aquaman.startFlockingAgain();
-        }
-    });
-    $(document).on('click', '#showNames', function() {
-        if ($(this).is(':checked')) {
-            globalShowNames = true;
-        } else {
-            globalShowNames = false;
-        }
-    });
-});
+// $(function() {
+//     $(document).on('click', '#spawnAquaman', function() {
+//         if (!aquaman) {
+//             spawnTheAquaman(width / 2, height / 2);
+//             $('#stopAquaman').attr('disabled', false);
+//             $('#startAquamanAgain').attr('disabled', false);
+//             $(this).attr('disabled', true);
+//         }
+//     });
+//     $(document).on('click', '#stopAquaman', function() {
+//         if (aquaman) {
+//             aquaman.stopFlocking();
+//         }
+//     });
+//     $(document).on('click', '#startAquamanAgain', function() {
+//         if (aquaman) {
+//             aquaman.startFlockingAgain();
+//         }
+//     });
+//     $(document).on('click', '#showNames', function() {
+//         if ($(this).is(':checked')) {
+//             globalShowNames = true;
+//         } else {
+//             globalShowNames = false;
+//         }
+//     });
+// });
 
 function preload() {
     aquamanImage = loadImage('assets/images/aquaman.png');
@@ -70,8 +70,8 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(windowWidth - 100, windowHeight - 100);
-    initializeUI();
+    createCanvas(windowWidth, windowHeight-5);
+    // initializeUI();
     imageMode(CENTER);
     angleMode(DEGREES);
     nests.push(new Nest('Fish'));
