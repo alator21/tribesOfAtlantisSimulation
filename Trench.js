@@ -1,4 +1,6 @@
+/* global globalShowNames,globalShowKills */
 'use strict';
+// eslint-disable-next-line
 class Trench extends Boid {
 	constructor(x, y, size, velocity, image, imageFlipped) {
 		super(x, y, size, velocity, image, imageFlipped);

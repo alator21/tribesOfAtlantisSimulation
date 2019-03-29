@@ -1,5 +1,8 @@
+// eslint-disable-next-line no-unused-vars
+/* global globalShowNames,globalImageMode,maskImage,p5,fishElements,trenchElements,brineElements,fishermanElements,allElements,aquaman */
 'use strict';
 const names = ['John', 'Alfie', 'Alfred', 'Bellamy', 'Atticus', 'Blaze', 'Jeannine', 'Fritz', 'Garry', 'Fabian', 'Rafael', 'Connor', 'Zachariah', 'Solomon', 'Byron', 'Franklin', 'Ian', 'Zakaria', 'Julian', 'Margot', 'Anam', 'Nina', 'Scarlet', 'Hakeem', 'Troy', 'Paolo', 'Nolan', 'Carina', 'Ioana', 'Bayley', 'Alex', 'Eliza', 'Ismail', 'Nate', 'Shanna', 'Anne', 'Tayler', 'Reagan', 'Isa', 'Jazmin', 'Shannon', 'Fatma', 'Idris'];
+// eslint-disable-next-line
 class Boid {
 	constructor(x, y, size, velocity, image, imageFlipped) {
 		this.position = createVector(x, y);
@@ -175,7 +178,6 @@ class Boid {
 
 	chase(elements, chaseMult = 5) {
 		let perceptionRadius = 150;
-		let total = 0;
 		let steering = createVector(0, 0);
 		let minDistance = 500;
 		let closestElement;
