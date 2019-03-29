@@ -1,14 +1,38 @@
 {
-    "browser": true,
-    "node": true,
-    "esversion": 6,
-    "globalstrict": true,
-    "quotmark": true,
-    "undef": true,
-    "unused": false,
-    "globals":
-    {
-        "ADD": true,
+	"env": {
+		"browser": true,
+		"es6": true,
+		"node": true
+	},
+	"extends": "eslint:recommended",
+	"parserOptions": {
+		"ecmaVersion": 2018,
+		"sourceType": "module"
+	},
+	"rules": {
+		"no-console": "off",
+		"indent": [
+			"error",
+			"tab",
+			{
+				"SwitchCase": 1
+			}
+		],
+		"linebreak-style": [
+			"error",
+			"unix"
+		],
+		"semi": [
+			"error",
+			"always"
+		],
+		"no-unused-vars": ["error", {
+			"args": "none"
+		}],
+		"no-global-assign": 0
+	},
+	"globals": {
+		"ADD": true,
         "ALT": true,
         "ARROW": true,
         "AUTO": true,
@@ -120,7 +144,6 @@
         "createCanvas": true,
         "createGraphics": true,
         "createImage": true,
-        "createInput": true,
         "createOutput": true,
         "createReader": true,
         "createVector": true,
@@ -130,8 +153,6 @@
         "curveDetail": true,
         "curvePoint": true,
         "curveTangent": true,
-        "curveTightness": true,
-        "curveTightness": true,
         "curveVertex": true,
         "day": true,
         "degrees": true,
@@ -211,7 +232,6 @@
         "noCanvas": true,
         "noCursor": true,
         "noFill": true,
-        "noLoop": true,
         "noSmooth": true,
         "noStroke": true,
         "noTint": true,
@@ -241,8 +261,6 @@
         "popMatrix": true,
         "popStyle": true,
         "pow": true,
-        "print": true,
-        "print": true,
         "printMatrix": true,
         "println": true,
         "ptouchX": true,
@@ -283,20 +301,16 @@
         "saveStrings": true,
         "saveTable": true,
         "saveXML": true,
-        "scale": true,
         "second": true,
         "selectFolder": true,
         "selectInput": true,
         "selectOutput": true,
-        "set": true,
         "setFrameRate": true,
         "setup": true,
         "shearX": true,
         "shearY": true,
         "shorten": true,
         "sin": true,
-        "size": true,
-        "smooth": true,
         "sort": true,
         "splice": true,
         "split": true,
@@ -328,7 +342,6 @@
         "trim": true,
         "updatePixels": true,
         "vertex": true,
-        "width": true,
         "winMouseX": true,
         "winMouseY": true,
         "windowHeight": true,
@@ -357,7 +370,7 @@
         "createCapture": true,
         "createElement": true,
 
-        //p5.Element[34]
+        
         "elt": true,
         "parent": true,
         "id": true,
@@ -393,38 +406,22 @@
         "size": true,
         "remove": true,
 
-        //p5.MediaElement[19]
+        
         "src": true,
-        "play": true,
-        "stop": true,
-        "pause": true,
-        "loop": true,
-        "noLoop": true,
         "autoplay": true,
         "volume": true,
         "speed": true,
         "time": true,
-        "duration": true,
-        "onended": true,
-        "connect": true,
-        "disconnect": true,
         "showControls": true,
         "hideControls": true,
-        "addCue": true,
-        "removeCue": true,
-        "clearCues": true,
 
-        //p5.File[6]
+        
         "file": true,
         "type": true,
         "subtype": true,
         "name": true,
-        "size": true,
         "data": true,
 
-
-        //[8]
-        "sampleRate": true,
         "freqToMidi": true,
         "midiToFreq": true,
         "soundFormats": true,
@@ -433,20 +430,15 @@
         "masterVolume": true,
         "soundOut": true,
 
-        //p5.SoundFile[32]
+        
         "loadSound": true,
         "isLoaded": true,
-        "play": true,
         "playMode": true,
-        "pause": true,
-        "loop": true,
         "setLoop": true,
         "isLooping": true,
         "isPlaying": true,
         "isPaused": true,
-        "stop": true,
         "setVolume": true,
-        "pan": true,
         "getPan": true,
         "rate": true,
         "duration": true,
@@ -467,14 +459,10 @@
         "removeCue": true,
         "clearCues": true,
 
-        //p5.Amplitude[4]
-        "setInput": true,
-        "getLevel": true,
+        
         "toggleNormalize": true,
-        "smooth": true,
 
-        //p5.FFT[9]
-        "setInput": true,
+        
         "waveform": true,
         "analyze": true,
         "getEnergy": true,
@@ -484,95 +472,53 @@
         "logAverages": true,
         "getOctaveBands": true,
 
-        //p5.Signal[5]
+        
         "fade": true,
-        "setInput": true,
-        "add": true,
-        "mult": true,
-        "scale": true,
 
-        //p5.Oscillator[12]
-        "start": true,
-        "stop": true,
-        "amp": true,
-        "freq": true,
-        "setType": true,
-        "connect": true,
-        "disconnect": true,
-        "pan": true,
+        
         "phase": true,
-        "add": true,
-        "mult": true,
-        "scale": true,
 
-        //p5.Env[18]
+        
         "attackTime": true,
         "attackLevel": true,
         "decayTime": true,
         "decayLevel": true,
         "releaseTime": true,
         "releaseLevel": true,
-        "set": true,
-        "setADSR": true,
-        "setRange": true,
-        "setInput": true,
         "setExp": true,
-        "play": true,
-        "triggerAttack": true,
-        "triggerRelease": true,
         "ramp": true,
         "add": true,
         "mult": true,
         "scale": true,
 
-        //p5.Pulse[1]
+        
         "width": true,
 
-        //p5,Noise[7]
-        "setType": true,
-        "start": true,
-        "stop": true,
+        
         "pan": true,
-        "amp": true,
-        "connect": true,
-        "disconnect": true,
 
-        //p5.AudioIn[9]
+        
         "enabled": true,
-        "start": true,
-        "stop": true,
-        "connect": true,
-        "disconnect": true,
         "getLevel": true,
-        "amp": true,
         "getSources": true,
         "setSource": true,
 
-        //p5.Effect[5]
-        "amp": true,
+        
         "chain": true,
         "drywet": true,
-        "connect": true,
-        "disconnect": true,
 
-        //p5.Filter[8]
+        
         "biquadFilter": true,
-        "process": true,
-        "set": true,
         "freq": true,
         "res": true,
         "gain": true,
         "toggle": true,
-        "setType": true,
 
-        //p5.EQ[2]
+        
         "bands": true,
-        "process": true,
 
-        //p5.Panner3D[13]
+        
         "paner": true,
-        "process": true,
-        "set": true,
         "positionX": true,
         "postionY": true,
         "positionZ": true,
@@ -584,65 +530,41 @@
         "maxDist": true,
         "rollof": true,
 
-        //p5.Delay[10]
+        
         "leftDelay": true,
         "rightDelay": true,
-        "process": true,
         "delayTime": true,
         "feedback": true,
-        "filter": true,
         "setType": true,
-        "amp": true,
-        "connect": true,
-        "disconnect": true,
 
-        //p5.Reverb[5]
-        "process": true,
-        "set": true,
-        "amp": true,
-        "connect": true,
-        "disconnect": true,
-
-        //p5.Convolver[8]
+        
+        
         "convolverNod": true,
         "createConvolver": true,
-        "process": true,
         "impulses": true,
         "addImpulse": true,
         "resetImpulse": true,
         "toggleImpulse": true,
-        "setBPM": true,
 
-        //p5.Phrase[1]
+        
         "sequence": true,
 
-        //p5.Part[12]
-        "setBPM": true,
+        
         "getBPM": true,
-        "start": true,
-        "loop": true,
-        "noLoop": true,
-        "stop": true,
-        "pause": true,
         "addPhrase": true,
         "removePhrase": true,
         "getPhrase": true,
         "replaceSequence": true,
         "onStep": true,
 
-        //p5.Score[6]
-        "start": true,
-        "stop": true,
-        "pause": true,
-        "loop": true,
+        
         "noLoop": true,
         "setBPM": true,
 
-        //p5.SoundLoop[10]
+        
         "musicalTimeMode": true,
         "maxIterations": true,
         "start": true,
-        "stop": true,
         "pause": true,
         "syncedStart": true,
         "bpm": true,
@@ -650,53 +572,37 @@
         "interval": true,
         "iterations": true,
 
-        //p5.Compressor[9]
+        
         "compressor": true,
-        "process": true,
-        "set": true,
-        "attack": true,
         "knee": true,
         "ratio": true,
         "threshold": true,
-        "release": true,
         "reduction": true,
 
-        //p5.SoundRecorder[4]
-        "setInput": true,
+        
         "record": true,
         "stop": true,
         "saveSound": true,
 
-        //p5.PeakDetect[3]
+        
         "isDetected": true,
         "update": true,
         "onPeak": true,
 
-        //p5.Gain[4]
+        
         "setInput": true,
-        "connect": true,
-        "disconnect": true,
-        "amp": true,
 
-        //p5.AudioVoice[2]
-        "connect": true,
-        "disconnect": true,
+        
 
-        //p5.MonoSynth[12]
-        "play": true,
+        
         "triggerAttack": true,
         "triggerRelease": true,
-        "setADSR": true,
         "attack": true,
         "decay": true,
         "sustain": true,
         "release": true,
         "amp": true,
-        "connect": true,
-        "disconnect": true,
-        "dispose": true,
-
-        //p5.PolySynth[11]
+        
         "notes": true,
         "polyvalue": true,
         "AudioVoice": true,
@@ -705,46 +611,13 @@
         "setADSR": true,
         "noteAttack": true,
         "noteRelease": true,
-        "connect": true,
-        "disconnect": true,
         "dispose": true,
 
-        //p5.Distortion[5]
+        
         "WaveShaperNode": true,
         "process": true,
         "set": true,
         "getAmount": true,
-        "getOversample": true,
-
-        "p5": true,
-        "Boid" : true,
-        "Nest" : true,
-        "Fish" : true,
-        "Trench" : true,
-        "Brine" : true,
-        "Fisherman" : true,
-        "Aquaman" : true,
-        "aquamanImage" : true,
-        "aquamanImageFlipped" : true,
-        "fishImage" : true,
-        "fishImageFlipped" : true,
-        "trenchImage" : true,
-        "trenchImageFlipped" : true,
-        "brineImage" : true,
-        "brineImageFlipped" : true,
-        "fishermanImage" : true,
-        "fishermanImageFlipped" : true,
-        "maskImage" : true,
-        "globalShowNames" : true,
-        "globalImageMode" : true,
-        "globalShowKills" : true,
-        "allElements" : true,
-        "fishElements" : true,
-        "trenchElements" : true,
-        "brineElements" : true,
-        "fishermanElements" : true,
-        "aquaman" : true,
-        
-        "$": true
-    }
+        "getOversample": true
+	}
 }
