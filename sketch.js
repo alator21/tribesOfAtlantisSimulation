@@ -1,4 +1,4 @@
-/* global Fish,Nest,Trench,Brine,Fisherman */
+/* global Fish,Nest,Trench,Brine,Fisherman,Aquaman,p5 */
 'use strict';
 let nests = [];
 let fishElements = [];
@@ -7,6 +7,8 @@ let brineElements = [];
 let fishermanElements = [];
 let allElements = [];
 let aquaman;
+let aquamanImage;
+let aquamanImageFlipped;
 let fishImage;
 let fishImageFlipped;
 let trenchImage;
@@ -27,6 +29,8 @@ let globalShowKills = false;
 
 // eslint-disable-next-line
 function preload() {
+	aquamanImage = loadImage('assets/images/aquaman.png');
+	aquamanImageFlipped = loadImage('assets/images/aquamanFlipped.png');
 	fishImage = loadImage('assets/images/fish.png');
 	fishImageFlipped = loadImage('assets/images/fishFlipped.png');
 	trenchImage = loadImage('assets/images/trench.png');
@@ -55,6 +59,7 @@ function setup() {
 	spawnTrench(10);
 	spawnBrine(5);
 	spawnFisherman(5);
+	// spawnTheAquaman(width/2,height/2);
 }
 // eslint-disable-next-line
 function draw() {
@@ -212,4 +217,12 @@ function spawnFisherman(howMany) {
 			break;
 		}
 	}
+}
+// eslint-disable-next-line no-unused-vars
+function spawnTheAquaman(x, y) {
+	let size = 60;
+	let velocity = p5.Vector.random2D();
+	velocity.setMag(8);
+	aquaman = new Aquaman(x, y, size, velocity, aquamanImage, aquamanImageFlipped);
+	allElements.push(aquaman);
 }
