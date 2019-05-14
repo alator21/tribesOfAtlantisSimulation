@@ -47,7 +47,6 @@ function preload() {
 // eslint-disable-next-line
 function setup() {
 	createCanvas(windowWidth, windowHeight - 5);
-	// initializeUI();
 	imageMode(CENTER);
 	angleMode(DEGREES);
 	nests.push(new Nest('Fish'));
